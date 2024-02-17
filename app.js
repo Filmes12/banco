@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 
+// Importar o arquivo de integração do GitHub
+require('./githubIntegration');
+
 // Configuração do servidor
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -94,7 +97,6 @@ app.post('/alterar-senha', (req, res) => {
         res.status(404).send('Usuário não encontrado.');
     }
 });
-
 
 // Iniciar servidor
 const PORT = process.env.PORT || 3000;
